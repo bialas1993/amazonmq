@@ -8,9 +8,9 @@ import (
 	"github.com/go-stomp/stomp"
 )
 
-const defaultPort = ":61616"
+const defaultPort = ":61613"
 
-var serverAddr = flag.String("server", "localhost:61616", "STOMP server endpoint")
+var serverAddr = flag.String("server", "127.0.0.1:61613", "STOMP server endpoint")
 var messageCount = flag.Int("count", 10, "Number of messages to send/receive")
 var queueName = flag.String("queue", "premium.paywall.subscriber.payment", "Destination queue")
 var helpFlag = flag.Bool("help", false, "Print help text")
@@ -18,7 +18,7 @@ var stop = make(chan bool)
 
 // these are the default options that work with RabbitMQ
 var options []func(*stomp.Conn) error = []func(*stomp.Conn) error{
-	stomp.ConnOpt.Login("admin", "admin"),
+	// stomp.ConnOpt.Login("admin", "admin"),
 	// stomp.ConnOpt.Host("/"),
 }
 
